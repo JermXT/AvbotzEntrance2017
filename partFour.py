@@ -1,6 +1,8 @@
 import copy
+############################################################
 # DP used
 # runs in time O(N) where N is number of nodes(r*c)
+############################################################
 file = open("sum.in", "r")
 input = file.readline()
 input = input.rstrip()
@@ -23,10 +25,13 @@ for x in range(int(input[0])):
 parent = copy.deepcopy(nodes)
 visited = {}
 file.close()
-
-# info are the dist. for each path
+############################################################
+# visited is a dictionary of [r,c]:distance
+# info are the distance values for each node
 # nodes are the current values, with -1 being unvisited
 # parent keeps track of the parent node of the position that is being occupied
+############################################################
+
 
 def updateSurroundings(tempy,tempx):
     closest = -1
@@ -37,8 +42,7 @@ def updateSurroundings(tempy,tempx):
             parent[tempy][tempx+1] = [tempy,tempx]
             visited[tempy,tempx+1] = nodes[tempy][tempx+1]
             if int(info[tempy][tempx+1]) + nodes[tempy][tempx] < closest or closest == -1:
-                closest = int(info[tempy][tempx+1]) + nodes[tempy][tempx]
-                
+                closest = int(info[tempy][tempx+1]) + nodes[tempy][tempx]                
     if tempy < yval-1:
         #check node below
         if nodes[tempy][tempx] + int(info[tempy+1][tempx]) < nodes[tempy+1][tempx] or nodes[tempy+1][tempx] == -1:
@@ -63,42 +67,33 @@ def updateSurroundings(tempy,tempx):
             visited[tempy-1,tempx] = nodes[tempy-1][tempx]
             if int(info[tempy-1][tempx]) + nodes[tempy][tempx] < closest or closest == -1:
                 closest = int(info[tempy-1][tempx]) + nodes[tempy][tempx]
-                
-    
+############################################################
+# Updates path from current nodes to surrounding nodes.
+# If less than current val or surrounding node is unvisited,
+# surrounding node is updated. 
+############################################################
 
-#main
+def test():
+    print ""
+    for x in range(yval):
+        print nodes[x]
+        
+
+
 nodes[0][0] = int(info[0][0]) 
 currentx = 0
 currenty = 0
-#updateSurroundings(0,0)
-#coord = [0,0]
 while nodes[yval-1][xval-1] == -1:    
     updateSurroundings(currenty,currentx)    
     currenty = min(visited, key=visited.get)[0]
     currentx = min(visited, key=visited.get)[1]
     del visited[currenty,currentx]
-    """
-    print nodes[0]
-    print nodes[1]
-    print nodes[2]
-    print nodes[3]
-    print nodes[4]
-    print " "
-    """
+    #test()
 print nodes[yval-1][xval-1]
-"""
-print " "
-print " "
-print parent[0]
-print parent[1]
-print parent[2]
-print parent[3]
-#print parent[4]
+############################################################  
+# starts updating surrounding nodes at position (0,0)
+# chooses next node to update based on smallest value in
+# dictionary, and finishes when the current node is (r,c)
+# uncomment #test() to see the map updating
+############################################################  
 
-print " "
-print nodes[0]
-print nodes[1]
-print nodes[2]
-print nodes[3]
-print nodes[4]
-"""

@@ -1,0 +1,9 @@
+Basically Monte Carlo Localization puts a bunch of randomly generated submarines 
+with different orientations in the pool. Then, based off of the information 
+gathered from the camera, the algorithm can estimate the possible locations for 
+the submarine(i.e. if there are 3 buoys in front of the camera, the sub knows it 
+is on one side of the buoys). The hypothetical submarines in the possible 
+locations are then weighted greater than the ones that are not likely to be 
+where the sub is. Then, a new bunch of submarines are generated, mostly next to 
+the heavily weighted submarines. This process is repeated until the vast majority 
+of the submarines have converged at one point with one orientation. 

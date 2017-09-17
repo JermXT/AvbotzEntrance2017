@@ -3,11 +3,15 @@ Monte Carlo Localization is an algorithm used by robots to find their location,
 given a map of the surroundings. It works by eliminating the places where the 
 robot cannot be. 
 The steps of the algorithm:
-1. A set of hypothetical robots are created at random positions in the map
+1. A set of hypothetical robots are created at random positions and random 
+orientations in the map
 2. The actual robot gathers data from its surroundings
-3. Based off of the data, some hypothetical robots can be eliminated, as they could not be where the actual robot is.
+3. Based off of the data, some hypothetical robots can be eliminated, as they could 
+not be where the actual robot is.
 4. Then, a new set of hypothetical robots are created, with those robots clustered around the remaining robots from the old set.
-5. This process repeats until the majority of the hypothetical robots are at one position and orientation.
+5. The steps 1-4 repeat until the majority of the hypothetical robots are at one position and orientation.
 
-
-
+Note: in step two, data is gathered through observations. Should the robot move in 
+one direction and make an observation, all the hypothetical subs will also move in 
+that direction. Additionally, noise will be applied, resulting in a slight scattering 
+of the hypothetical subs. Only after the shift in position will some of the hypothetical subs be eliminated. 

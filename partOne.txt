@@ -1,9 +1,13 @@
-Basically Monte Carlo Localization puts a bunch of randomly generated submarines 
-with different orientations in the pool. Then, based off of the information 
-gathered from the camera, the algorithm can estimate the possible locations for 
-the submarine(i.e. if there are 3 buoys in front of the camera, the sub knows it 
-is on one side of the buoys). The hypothetical submarines in the possible 
-locations are then weighted greater than the ones that are not likely to be 
-where the sub is. Then, a new bunch of submarines are generated, mostly next to 
-the heavily weighted submarines. This process is repeated until the vast majority 
-of the submarines have converged at one point with one orientation. 
+
+Monte Carlo Localization is an algorithm used by robots to find their location, 
+given a map of the surroundings. It works by eliminating the places where the 
+robot cannot be. 
+The steps of the algorithm:
+1. A set of hypothetical robots are created at random positions in the map
+2. The actual robot gathers data from its surroundings
+3. Based off of the data, some hypothetical robots can be eliminated, as they could not be where the actual robot is.
+4. Then, a new set of hypothetical robots are created, with those robots clustered around the remaining robots from the old set.
+5. This process repeats until the majority of the hypothetical robots are at one position and orientation.
+
+
+

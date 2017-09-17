@@ -9,7 +9,7 @@ orientations in the map
 3. Based off of the data, some hypothetical robots can be eliminated, as they could 
 not be where the actual robot is.
 4. Then, a new set of hypothetical robots are created, with those robots clustered around the remaining robots from the old set.
-5. The steps 1-4 repeat until the majority of the hypothetical robots are at one position and orientation.
+5. The steps 2-4 repeat until the majority of the hypothetical robots are at one position and orientation.
 
 Note: in step two, data is gathered through observations. Should the robot move in 
 one direction and make an observation, all the hypothetical subs will also move in 

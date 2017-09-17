@@ -41,7 +41,6 @@ for x in range(2, val+1):
         while y < len+1:
             temp = d[y]+d[x-y]
             if(y == 1 or temp < min):
-                
                 min = temp
             y += 1
         d[x] = min

@@ -1,9 +1,9 @@
 ############################################################
 # Dp used
-# Runs in time O(N^2)
+# Runs in time O(N)
 ############################################################
 
-file = open("coins2.in", "r")
+file = open("inputs/coins2.in", "r")
 input = file.readline()
 file.close()
 input = input.rstrip()
@@ -32,25 +32,23 @@ d[coins[3]] = 1
 
 
 for x in range(2, val+1):
+    min = 100000000000000000
     if x not in d:
-        if x % 2 != 0:
-            len= (x-1)/2
-        else:
-            len = x/2
-        y = 1
-        while y < len+1:
-            temp = d[y]+d[x-y]
-            if(y == 1 or temp < min):
-                min = temp
-            y += 1
+        if x > coins[3]:
+            if min > d[x-coins[3]]+1:
+                min = d[x-coins[3]]+1
+        if x > coins[2]:
+            if min > d[x-coins[2]]+1:
+                min = d[x-coins[2]]+1
+        if x > coins[1]:
+            if min > d[x-coins[1]]+1:
+                min = d[x-coins[1]]+1
+        if x > coins[0]:
+            if min > d[x-coins[0]]+1:
+                min = d[x-coins[0]]+1
         d[x] = min
-        
-file = open("coins2.out", "w")
-
-file.write("%s" % (d[val]))
-file.close()
-
-
-        
-    
-
+print d[val]
+############################################################
+# finds solution of value minus each coin, checks which is
+# smallest.
+############################################################

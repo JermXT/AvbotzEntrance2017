@@ -1,4 +1,5 @@
 # AvbotzEntrance2017
+# Uses Python 2.7
 # Instructions:
 # https://docs.google.com/document/d/12ySUkLL70Ud8yYgXotmyhSxzoB0KMfsA7DYJQV9NQe0/edit
 # Resources:

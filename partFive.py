@@ -1,3 +1,16 @@
+############################################################
+# Pid takes the error values and calculates the thrust of
+# the quadcopter. Error*constant grows proportionally as
+# error becomes small, and helps accelerate in order to 
+# achieve the correct height. The derivative of the error
+# helps slow down the quadcopter as it approches the correct
+# height; the slope becomes negative when the error is 
+# decreasing. Last, the integral stops the quadcopter from
+# oscillating back and forth; once it has achieved the right
+# thrust, proportional and derivative are both zero, and the
+# integral is the area under the curve of the error, which 
+# will remain  constant because error is zero.
+############################################################   
 import time
 import pid
 
